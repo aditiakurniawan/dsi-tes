@@ -4,7 +4,7 @@ frontend tes menggunakan react js untuk menampilkan data user kedalam table yang
 
 ## Pembuatan Project awal dengan Vite
 
--[vite](https://vitejs.dev/guide/) npm create vite@latest dsi-test -- --template react
+- [Vite](https://vitejs.dev/guide/) npm create vite@latest dsi-test -- --template react
 
 - Masuk directory
   `cd dsi-test`
@@ -19,7 +19,7 @@ frontend tes menggunakan react js untuk menampilkan data user kedalam table yang
   `npm run dev`
 
 - Buka di browser
-  [url](http://127.0.0.1:5173/)
+  [http://127.0.0.1:5173/](http://127.0.0.1:5173/)
 
 ## Tambahkan ke repository Git
 
