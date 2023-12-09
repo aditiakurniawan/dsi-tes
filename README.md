@@ -1,8 +1,39 @@
-# React + Vite
+# Table data user
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+frontend tes menggunakan react js untuk menampilkan data user kedalam table yang dilengkapi dengan fitur filter secara ascending dan descending
 
-Currently, two official plugins are available:
+## Pembuatan Project awal dengan Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-[vite](https://vitejs.dev/guide/) npm create vite@latest dsi-test -- --template react
+
+- Masuk directory
+  `cd dsi-test`
+
+- Buka kode di vscode
+  `code .`
+
+- Install packages
+  `npm install`
+
+- Running
+  `npm run dev`
+
+- Buka di browser
+  [url](http://127.0.0.1:5173/)
+
+## Tambahkan ke repository Git
+
+- `git init -b main`
+- `git add .`
+- `git commit -m "first commit"`
+- `git remote add origin https://github.com/aditiakurniawan/dsi-tes.git`
+- `git push origin main`
+
+## Install Font awesome
+
+- `npm i --save @fortawesome/fontawesome-svg-core`
+
+- `npm i --save @fortawesome/free-solid-svg-icons`
+- `npm i --save @fortawesome/free-regular-svg-icons`
+- `npm i --save @fortawesome/free-brands-svg-icons`
+- `npm i --save @fortawesome/react-fontawesome@latest`
