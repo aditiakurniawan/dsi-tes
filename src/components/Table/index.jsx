@@ -29,6 +29,7 @@ const TableRows = ({ users }) => {
 export default function Table() {
   const [users, setUsers] = useState([]);
   const [sortOrder, setSortOrder] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [sortBy, setSortBy] = useState("id");
   const [defaultIcon, setDefaultIcon] = useState(true);
 
@@ -38,9 +39,11 @@ export default function Table() {
         const res = await fetch("https://jsonplaceholder.typicode.com/users");
         const data = await res.json();
         setUsers(data);
+        setLoading(true);
+        console.log("started at :" + Date.now());
       } catch (error) {
         console.log("error : ", error);
-        console.log("finished at" + Date.now());
+        console.log("finished at :" + Date.now());
       }
     };
 
@@ -52,8 +55,6 @@ export default function Table() {
 
     if (prop === "address") {
       copiedUsers.sort((a, b) => {
-        console.log("sort", "a", a[prop].street, "b", b[prop].street);
-        console.log("----", sortOrder);
         if (a[prop].street > b[prop].street) return sortOrder ? 1 : -1;
 
         if (a[prop].street < b[prop].street) return sortOrder ? -1 : -1;
@@ -101,45 +102,51 @@ export default function Table() {
 
   return (
     <>
-      <h1>Data Table User</h1>
-      <table>
-        <tr>
-          <th>No</th>
-          <th onClick={() => handleSort("name")}>
-            Name
-            {defaultIcon === false ? (
-              handleIconForName()
-            ) : (
-              <FontAwesomeIcon icon={faSort} />
-            )}
-          </th>
-          <th onClick={() => handleSort("email")}>
-            Email
-            {defaultIcon === false ? (
-              handleIconForEmail()
-            ) : (
-              <FontAwesomeIcon icon={faSort} />
-            )}
-          </th>
-          <th onClick={() => handleSort("address")}>
-            Address
-            {defaultIcon === false ? (
-              handleIconForAddress()
-            ) : (
-              <FontAwesomeIcon icon={faSort} />
-            )}
-          </th>
-          <th onClick={() => handleSort("phone")}>
-            Phone
-            {defaultIcon === false ? (
-              handleIconForPhone()
-            ) : (
-              <FontAwesomeIcon icon={faSort} />
-            )}
-          </th>
-        </tr>
-        <TableRows users={users} />
-      </table>
+      {loading ? (
+        <div>
+          <h1>Data Table User</h1>
+          <table>
+            <tr>
+              <th>No</th>
+              <th onClick={() => handleSort("name")}>
+                Name
+                {defaultIcon === false ? (
+                  handleIconForName()
+                ) : (
+                  <FontAwesomeIcon icon={faSort} />
+                )}
+              </th>
+              <th onClick={() => handleSort("email")}>
+                Email
+                {defaultIcon === false ? (
+                  handleIconForEmail()
+                ) : (
+                  <FontAwesomeIcon icon={faSort} />
+                )}
+              </th>
+              <th onClick={() => handleSort("address")}>
+                Address
+                {defaultIcon === false ? (
+                  handleIconForAddress()
+                ) : (
+                  <FontAwesomeIcon icon={faSort} />
+                )}
+              </th>
+              <th onClick={() => handleSort("phone")}>
+                Phone
+                {defaultIcon === false ? (
+                  handleIconForPhone()
+                ) : (
+                  <FontAwesomeIcon icon={faSort} />
+                )}
+              </th>
+            </tr>
+            <TableRows users={users} />
+          </table>
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </>
   );
 }
