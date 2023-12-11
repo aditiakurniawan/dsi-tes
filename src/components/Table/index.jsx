@@ -39,7 +39,8 @@ export default function Table() {
         const data = await res.json();
         setUsers(data);
       } catch (error) {
-        console.log(error);
+        console.log("error : ", error);
+        console.log("finished at" + Date.now());
       }
     };
 
@@ -49,13 +50,25 @@ export default function Table() {
   const handleSort = (prop) => {
     const copiedUsers = [...users];
 
-    copiedUsers.sort((a, b) => {
-      if (a[prop] > b[prop]) return sortOrder ? 1 : -1;
+    if (prop === "address") {
+      copiedUsers.sort((a, b) => {
+        console.log("sort", "a", a[prop].street, "b", b[prop].street);
+        console.log("----", sortOrder);
+        if (a[prop].street > b[prop].street) return sortOrder ? 1 : -1;
 
-      if (a[prop] < b[prop]) return sortOrder ? -1 : -1;
+        if (a[prop].street < b[prop].street) return sortOrder ? -1 : -1;
 
-      return 0;
-    });
+        return 0;
+      });
+    } else {
+      copiedUsers.sort((a, b) => {
+        if (a[prop] > b[prop]) return sortOrder ? 1 : -1;
+
+        if (a[prop] < b[prop]) return sortOrder ? -1 : -1;
+
+        return 0;
+      });
+    }
 
     setUsers(copiedUsers);
     setSortBy(prop);
